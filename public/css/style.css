@@ -1,0 +1,218 @@
+
+/*main*/
+.main{
+    background: url('imgs/m1.jpg') no-repeat; /* = background-image: url('imgs/m1.jpg'); background-repeat:  no-repeat; */
+    background-size: cover;
+    height: 120vh;
+    width:100%;
+}
+.main h1{
+    font-size: 5rem;
+    font-family: 'Righteous',cursive;
+}
+.main p:nth-child(1){
+    font-size: 18px;
+    font-weight: 500;
+    padding-top: 1 0px;
+}
+.main p:nth-child(2){
+    font-size: 18px;
+    color:gray;
+}
+.mbtn1{
+    height: 50px;
+    width: 25%;
+    outline: none;
+    color:white;
+    border: none;
+    background-color: rgb(20,219,20);
+    border-radius: 50px;
+    transition: all 0.4s;
+}
+.mbtn1:hover{
+    background-color: rgb(13,172,13);
+}
+.mbtn2{
+    height: 50px;
+    width: 25%;
+    outline: none;
+    color:rgb(20,219,20);
+    border: 1px solid rgb(20,219,20);
+    background-color: transparent ;
+    border-radius: 50px;
+    transition: all 0.4s;
+}
+.mbtn2:hover{
+    background-color: rgb(20,219,20);
+    color: white;
+    font-weight: 400;
+    border: none;
+}
+.line{
+    height: 6px;
+    width: 30%;
+    background:rgb(20,219,20);
+    display: inline-block;
+}
+/*about*/
+.about{
+    background:url('imgs/abut.jpg')no-repeat;
+    background-size:cover;
+    height: 80vh;
+    width: 100%;
+}
+.about h1{
+    font-size: 3rem;
+    font-weight: bold;
+}
+.about p:nth-child(1){
+    font-size: 18px;
+    font-weight: 500;
+    padding-top: 1 0px;
+}
+.about p:nth-child(2){
+    font-size: 18px;
+    color:black;
+    font-weight: bold;
+}
+
+/*discount*/
+.discount{
+   background-color: rgb(20,219,20);
+   color: white;
+}
+.offer{
+    border-radius: 50px;
+    outline: none;
+    border: none;
+    color: black;
+    background-color: white;
+    margin:0 auto;
+    font-weight: lighter;
+    /* padding: 10px 20px; */
+    height: 50px;
+    width: 75%;
+    transition: all 0.4s;
+}
+.offer:hover{
+    background-color: rgb(228,228,228);
+}
+/*store*/
+.store h1{
+    font-size: 3rem;
+    font-weight: bold;
+}
+.store p:nth-child(1){
+    font-size: 18px;
+    font-weight: 500;
+    padding-top: 10px;
+}
+.store p:nth-child(2){
+    font-size: 18px;
+    color:gray;
+}
+.store i{
+    font-size: 45px;
+}
+.store .card{
+    border-radius: 0;
+    border: none;
+    transition: all 0.3s;
+    cursor:pointer;
+}
+.store .card:hover{
+    background-color: rgb(20,219,20);
+    color: white;
+}
+.store .card:hover .per1{
+    color: white;
+}
+/*seller*/
+.seller h1{
+    font-size: 3rem;
+    font-weight: bold;
+}
+.seller i{
+    color: orange;
+}
+.seller .card{
+    border-radius: 0;
+    border: none ;
+}
+/*contact*/
+.contact{
+    background: url("imgs/cont.jpg") no-repeat;
+    background-size: cover;
+    width: 100%;
+}
+.contact h1{
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+}
+.contact p{
+    color: white;
+}
+.circle{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding-top: 15px;
+    font-size: 18px;
+}
+.contact input{
+    height:40px;
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: white;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+.contact textarea {
+    height:100px;
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: white;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+.cbtn{
+    height: 50px;
+    width: 45%;
+    color: black;
+    background: white;
+    border: none;
+    outline: none;
+    font-size: lighter;
+    border-radius: 50px;
+    transition:all 0.3s;
+}
+.cbtnHover {
+    background: white;
+}
+/*footer*/
+
+/*reponsive*/
+@media(max-width:1399px){
+    .about_responsive{
+        padding-bottom: 20px;
+    }
+    .about{
+        height: 110vh;
+    }
+}
+@media(max-width:992px){
+    .about_responsive{
+        padding-bottom: 20px;
+    }
+}
+@media(max-width:767px){
+    .about_responsive{
+        font-size: 14px;
+    }
+}
