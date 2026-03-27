@@ -12,6 +12,7 @@ use App\Models\City;
 use PDO;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\OrderRequest;
+use App\Jobs\SendLowStockEmail;
 
 class OrderController extends Controller
 {
@@ -31,17 +32,17 @@ class OrderController extends Controller
     }
 
     public function store(Cart $cart){
-        // dd($cart);
         $order = Order::create(
             ['user_id' => auth()->id(),
             'status'        => Order::STATUS_RECEIVED,
             'cart_id' => $cart->id,
         ]);
         foreach( $cart->products()->get() as $product){
-           $order->products()->attach($product->id,
+
+            $order->products()->attach($product->id,
             [
                 'quantity'      => $product->pivot->quantity,
-                'price'         => $product->price,
+                'price'         => $product->price * $product->pivot->quantity,
             ]);
         }
            $cart->update([
@@ -66,6 +67,10 @@ class OrderController extends Controller
                         throw new \Exception("Not enough stock of ".$product->name.".");
                     }
                     $product->decrement('stock_quantity',$qty);
+
+                    if($product->stock_quantity <= 10){
+                        SendLowStockEmail::dispatch($product);
+                    }
                 }
 
                 if($order->status == Order::STATUS_RECEIVED){

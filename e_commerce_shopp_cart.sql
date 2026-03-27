@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2026 at 04:26 AM
+-- Generation Time: Mar 23, 2026 at 07:35 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 8.0.19
 
@@ -48,7 +48,11 @@ INSERT INTO `carts` (`id`, `user_id`, `status`, `created_at`, `updated_at`) VALU
 (15, 1, 'completed', '2026-02-18 14:57:54', '2026-02-18 23:23:03'),
 (16, 1, 'completed', '2026-02-19 01:14:36', '2026-02-19 01:27:13'),
 (17, 1, 'completed', '2026-02-19 01:28:52', '2026-02-19 01:28:58'),
-(18, 1, 'completed', '2026-02-19 01:31:15', '2026-02-19 01:31:27');
+(18, 1, 'completed', '2026-02-19 01:31:15', '2026-02-19 01:31:27'),
+(19, 1, 'completed', '2026-02-24 17:00:29', '2026-02-24 17:00:47'),
+(20, 1, 'completed', '2026-03-02 13:19:39', '2026-03-02 13:19:49'),
+(21, 1, 'active', '2026-03-02 13:32:48', '2026-03-02 13:46:27'),
+(22, 3, 'completed', '2026-03-03 20:38:46', '2026-03-03 20:38:52');
 
 -- --------------------------------------------------------
 
@@ -92,7 +96,11 @@ INSERT INTO `cart_product` (`id`, `cart_id`, `product_id`, `quantity`, `created_
 (34, 16, 16, 5, '2026-02-19 01:15:17', '2026-02-19 01:15:17'),
 (35, 16, 17, 4, '2026-02-19 01:25:45', '2026-02-19 01:26:59'),
 (37, 17, 15, 4, '2026-02-19 01:28:52', '2026-02-19 01:28:52'),
-(38, 18, 26, 4, '2026-02-19 01:31:15', '2026-02-19 01:31:24');
+(38, 18, 26, 4, '2026-02-19 01:31:15', '2026-02-19 01:31:24'),
+(39, 19, 15, 25, '2026-02-24 17:00:29', '2026-02-24 17:00:29'),
+(40, 20, 15, 6, '2026-03-02 13:19:39', '2026-03-02 13:19:39'),
+(41, 21, 14, 6, '2026-03-02 13:32:48', '2026-03-02 13:32:48'),
+(42, 22, 16, 1, '2026-03-03 20:38:46', '2026-03-03 20:38:46');
 
 -- --------------------------------------------------------
 
@@ -159,6 +167,22 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `jobs`
+--
+
+CREATE TABLE `jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `queue` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `attempts` tinyint(3) UNSIGNED NOT NULL,
+  `reserved_at` int(10) UNSIGNED DEFAULT NULL,
+  `available_at` int(10) UNSIGNED NOT NULL,
+  `created_at` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -184,7 +208,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (9, '2026_01_26_120010_create_orders', 1),
 (10, '2026_01_26_120018_create_order_product', 1),
 (11, '2026_01_29_200940_add_cart_status_cart_table', 2),
-(12, '2026_02_26_110035_create_city_table', 3);
+(12, '2026_02_26_110035_create_city_table', 3),
+(13, '2026_03_03_214518_create_jobs_table', 4);
 
 -- --------------------------------------------------------
 
@@ -213,8 +238,11 @@ INSERT INTO `orders` (`id`, `address`, `city_id`, `total_price`, `status`, `user
 (4, 'Vojvode Stepe 109', 1, 477.00, 'sent', 1, 15, '2026-02-18 23:23:03', '2026-02-19 01:12:56'),
 (5, 'Vojvode Stepe 109', 2, 530.00, 'sent', 1, 16, '2026-02-19 01:27:13', '2026-02-19 01:27:24'),
 (6, 'Vojvode Stepe 109', 3, 192.00, 'sent', 1, 17, '2026-02-19 01:28:58', '2026-02-19 01:29:05'),
-(7, NULL, NULL, 0.00, 'recieved', 1, 18, '2026-02-19 01:31:27', '2026-02-19 01:31:27'),
-(8, 'Vojvode Stepe 109', 4, 60.00, 'sent', 1, 18, '2026-02-19 01:31:33', '2026-02-19 01:31:47');
+(7, 'Vojvode Stepe 109', 1, 60.00, 'sent', 1, 18, '2026-02-19 01:31:27', '2026-02-24 12:43:35'),
+(8, 'Vojvode Stepe 109', 4, 60.00, 'sent', 1, 18, '2026-02-19 01:31:33', '2026-02-19 01:31:47'),
+(9, 'Vojvode Stepe 109', 1, 1200.00, 'sent', 1, 19, '2026-02-24 17:00:47', '2026-02-24 17:06:27'),
+(10, 'Vojvode Stepe 109', 1, 288.00, 'sent', 1, 20, '2026-03-02 13:19:49', '2026-03-02 13:29:18'),
+(11, 'Vojvode Stepe 109', 1, 15.00, 'sent', 3, 22, '2026-03-03 20:38:52', '2026-03-03 20:38:58');
 
 -- --------------------------------------------------------
 
@@ -248,7 +276,10 @@ INSERT INTO `order_product` (`id`, `order_id`, `product_id`, `quantity`, `price`
 (13, 5, 17, 4, 43, '2026-02-19 01:27:13', '2026-02-19 01:27:13'),
 (14, 6, 15, 4, 48, '2026-02-19 01:28:58', '2026-02-19 01:28:58'),
 (15, 7, 26, 4, 15, '2026-02-19 01:31:27', '2026-02-19 01:31:27'),
-(16, 8, 26, 4, 15, '2026-02-19 01:31:33', '2026-02-19 01:31:33');
+(16, 8, 26, 4, 15, '2026-02-19 01:31:33', '2026-02-19 01:31:33'),
+(17, 9, 15, 25, 48, '2026-02-24 17:00:47', '2026-02-24 17:00:47'),
+(18, 10, 15, 6, 48, '2026-03-02 13:19:49', '2026-03-02 13:19:49'),
+(19, 11, 16, 1, 15, '2026-03-03 20:38:52', '2026-03-03 20:38:52');
 
 -- --------------------------------------------------------
 
@@ -305,8 +336,8 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `name`, `description`, `image`, `price`, `category_id`, `stock_quantity`, `created_at`, `updated_at`) VALUES
 (14, 'Chilli', '', 'chilli.jpg', 43.00, 2, 41, '2026-01-28 22:09:14', '2026-02-19 01:27:24'),
-(15, 'Green apple', '', 'gApple.jpg', 48.00, 1, 34, '2026-01-28 22:09:14', '2026-02-19 01:29:05'),
-(16, 'Garlic', '', 'garlic.jpg', 15.00, 2, 37, '2026-01-28 22:09:14', '2026-02-19 01:27:24'),
+(15, 'Green apple', '', 'gApple.jpg', 48.00, 1, 3, '2026-01-28 22:09:14', '2026-03-02 13:29:18'),
+(16, 'Garlic', '', 'garlic.jpg', 15.00, 2, 36, '2026-01-28 22:09:14', '2026-03-03 20:38:58'),
 (17, 'Lemon', '', 'lemon.jpg', 43.00, 1, 41, '2026-01-28 22:09:14', '2026-02-19 01:27:24'),
 (18, 'Manngo', '', 'manngo.jpg', 48.00, 1, 45, '2026-01-28 22:09:14', '2026-01-28 22:09:14'),
 (19, 'Melon', '', 'melon.jpg', 15.00, 2, 45, '2026-01-28 22:09:14', '2026-01-28 22:09:14'),
@@ -316,7 +347,7 @@ INSERT INTO `products` (`id`, `name`, `description`, `image`, `price`, `category
 (23, 'Pom', '', 'pom.jpg', 48.00, 1, 45, '2026-01-28 22:09:14', '2026-01-28 22:09:14'),
 (24, 'Onions', '', 'raw-onions.jpg', 15.00, 2, 44, '2026-01-28 22:09:14', '2026-02-19 01:12:56'),
 (25, 'Red Apple', '', 'red-apple.jpg', 48.00, 1, 45, '2026-01-28 22:09:14', '2026-01-28 22:09:14'),
-(26, 'Strawbery', '', 'strawnb.jpg', 15.00, 1, 41, '2026-01-28 22:09:14', '2026-02-19 01:31:47');
+(26, 'Strawbery', '', 'strawnb.jpg', 15.00, 1, 37, '2026-01-28 22:09:14', '2026-02-24 12:43:35');
 
 -- --------------------------------------------------------
 
@@ -341,7 +372,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'John Doe', 'john@gmail.com', NULL, '$2y$10$HyDwpNoTV/IzNvkQ7H0PsuT9vvBPwKRiRhYxoP99RKptRLp4GshNS', NULL, '2026-01-28 22:20:38', '2026-01-28 22:20:38'),
-(2, 'Marta Kush', 'kush@gmail.com', NULL, '$2y$10$mwmc9eJ5mq.6L/eGAdF9x.dOisRdH8ZrM85O0K8BXMtbiN6Ks0jhW', NULL, '2026-02-13 15:09:57', '2026-02-13 15:09:57');
+(2, 'Marta Kush', 'kush@gmail.com', NULL, '$2y$10$mwmc9eJ5mq.6L/eGAdF9x.dOisRdH8ZrM85O0K8BXMtbiN6Ks0jhW', NULL, '2026-02-13 15:09:57', '2026-02-13 15:09:57'),
+(3, 'admin', 'admin@gmail.com', NULL, '$2y$10$uLGkoLVrZcd77ryxdlIGh.4K41NyCCAGpzeZSOp3JHs5rizRGhAAe', NULL, '2026-03-03 18:42:17', '2026-03-03 18:42:17');
 
 --
 -- Indexes for dumped tables
@@ -380,6 +412,13 @@ ALTER TABLE `cities`
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `jobs`
+--
+ALTER TABLE `jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `jobs_queue_index` (`queue`);
 
 --
 -- Indexes for table `migrations`
@@ -438,13 +477,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `cart_product`
 --
 ALTER TABLE `cart_product`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -465,22 +504,28 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `jobs`
+--
+ALTER TABLE `jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `order_product`
 --
 ALTER TABLE `order_product`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -498,7 +543,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

@@ -67,13 +67,7 @@
 </script>
 <template>
     <MainLayout>
-        <div v-if="flash?.error" class="bg-red-100 text-red-700 px-4 py-2 rounded mb-4">
-            {{ flash.error }}
-        </div>
-        <div v-if="flash?.success" class="bg-green-600 text-green-800 px-4 py-2 rounded mb-4">
-            {{ flash.success }}
-        </div>
-         <div class="flex items-start pr-14 pt-4">
+        <div class="flex items-start pr-14 pt-4">
             <button type="button" class="p-2 ml-auto bg-green-600 text-white text-lg font-semibold
                                     rounded-lg hove:bg-green-300 focus:outline-none
                                     focus:ring-2 focus:ring-green-500 transition"

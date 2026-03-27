@@ -76,6 +76,7 @@ class CartController extends Controller
                         ->where('user_id',auth()->id())
                         ->orderByDesc('created_at')
                         ->first();
+        $product = Product::where('id',$product_id)->first();
 
         try{
             if($order == null){
@@ -84,24 +85,36 @@ class CartController extends Controller
                     'status'  => Cart::STATUS_ACTIVE,
                 ]);
                 if($cart->products()->where('product_id',$product_id)->exists()){
+                    if($quantity_cart < $product->stock_quantity){
+                        $pivot = $cart->products()
+                                        ->where('product_id',$product_id)
+                                        ->first();
 
-                    $pivot = $cart->products()
-                                    ->where('product_id',$product_id)
-                                    ->first();
+                        $cart->products()->updateExistingPivot($product_id,[
+                            'quantity' => $pivot->pivot->quantity + $quantity_cart
+                        ]);
+                        return redirect()->route('products.index')
+                                            ->with('success', 'You added product to cart.');
+                    }
+                    else{
+                        return redirect()->route('products.index')
+                                    ->with('success', 'There is not enough stock for that product.');
 
-                    $cart->products()->updateExistingPivot($product_id,[
-                        'quantity' => $pivot->pivot->quantity + $quantity_cart
-                    ]);
-                    return redirect()->route('products.index')
-                                        ->with('success', 'You added product to cart.');
+                    }
                 }
                 else{
-                    $cart->products()->attach($product_id, [
-                        'cart_id' => $cart->id,
-                        'quantity' => $quantity_cart,
-                    ]);
-                    return redirect()->route('products.index')
+                    if($quantity_cart < $product->stock_quantity){
+                        $cart->products()->attach($product_id, [
+                            'cart_id' => $cart->id,
+                            'quantity' => $quantity_cart,
+                        ]);
+                        return redirect()->route('products.index')
                                         ->with('success', 'You added product to cart.');
+                    }
+                    else{
+                        return redirect()->route('products.index')
+                                        ->with('success', 'There is not enough stock for that product.');
+                    }
                 }
             }
             else{
