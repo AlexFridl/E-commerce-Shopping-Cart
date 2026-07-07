@@ -1,21 +1,23 @@
 # Laravel Vue Shopping Cart
 
-This project is a simple e-commerce shopping cart system built with Laravel and Vue.  
+This project is a simple e-commerce shopping cart system built with Laravel and Vue.js.  
 It allows authenticated users to browse products, add them to a cart, update quantities, and remove items.
 
-The application follows Laravel best practices and uses built-in authentication from the official starter kit.
+The application follows Laravel best practices and uses the official Laravel authentication starter kit.
 
-### Implemented Feature:
-•	Built a service-based architecture for handling external API communication and business logic separation. 
-•	Implemented integration with the external REST API (JSONPlaceholder) using Laravel HTTP Client. 
-•	Designed and used DTOs for structured and consistent data transformation. 
-•	Developed API endpoints for retrieving and managing synchronized data. 
-•	Implemented request validation using the Laravel FormRequest classes. 
-•	Structured application using layered architecture (Controller, Service, DTO, Model).
+## Implemented Feature:
+•	Implemented user authentication and authorization.
+•	Developed a product catalog with shopping cart functionality (add/remove items).
+•	Implemented Cash on Delivery checkout with shipping address management.
+•	Developed inventory management logic that automatically detects low stock levels. 
+•	Implemented automatic low-stock email notifications using Laravel Jobs. 
+•	Implemented a scheduled daily sales report using Laravel Task Scheduler and a custom Artisan Command
+•	Built responsive user interfaces in Vue.js integrated with Laravel through Inertia.js.
+
 
 ---
 
-## Features
+## Application Features
 
 - User authentication (Laravel starter kit)
 - Product listing (name, price, stock quantity)
@@ -27,7 +29,8 @@ The application follows Laravel best practices and uses built-in authentication 
 - Stock validation on add/update actions
 - Create order
 - Cancel order
-- Send order
+- Submit order
+- Stock validation
 
 Each shopping cart is linked to the authenticated user via the `User` model.  
 Cart actions are persisted in the database and are not handled through sessions or local storage.
@@ -36,11 +39,19 @@ Cart actions are persisted in the database and are not handled through sessions 
 
 ## Tech Stack
 
-- **Backend:** Laravel
+- **Backend:**  Laravel
 - **Frontend:** Vue (Laravel starter kit)
 - **Styling:** Tailwind CSS
 - **Database:** MySQL
 
+- PHP
+- Laravel
+- MySQL
+- Vue.js
+- Inertia.js
+- Bootstrap
+- Laravel Jobs
+- Laravel Task Scheduler
 ---
 
 ## Project Structure
