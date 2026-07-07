@@ -5,7 +5,7 @@ It allows authenticated users to browse products, add them to a cart, update qua
 
 The application follows Laravel best practices and uses built-in authentication from the official starter kit.
 
-Implemented Feature:
+### Implemented Feature:
 •	Built a service-based architecture for handling external API communication and business logic separation. 
 •	Implemented integration with the external REST API (JSONPlaceholder) using Laravel HTTP Client. 
 •	Designed and used DTOs for structured and consistent data transformation. 
