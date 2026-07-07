@@ -5,6 +5,14 @@ It allows authenticated users to browse products, add them to a cart, update qua
 
 The application follows Laravel best practices and uses built-in authentication from the official starter kit.
 
+Implemented Feature:
+•	Built a service-based architecture for handling external API communication and business logic separation. 
+•	Implemented integration with the external REST API (JSONPlaceholder) using Laravel HTTP Client. 
+•	Designed and used DTOs for structured and consistent data transformation. 
+•	Developed API endpoints for retrieving and managing synchronized data. 
+•	Implemented request validation using the Laravel FormRequest classes. 
+•	Structured application using layered architecture (Controller, Service, DTO, Model).
+
 ---
 
 ## Features
@@ -50,7 +58,7 @@ The application follows the MVC pattern:
 2026_01_26_120010_create_orders.php
 2026_01_26_120018_create_order_product.php
 2026_01_29_200940_add_cart_status_cart_table.php
-- Seeders (Seed tables in database): CategorySeede.php, CitySeeder.php, ProductSeeder.php
+- Seeders (Seed tables in database): CategorySeeder.php, CitySeeder.php, ProductSeeder.php
 
 
 ---
@@ -65,7 +73,7 @@ The application follows the MVC pattern:
     npm install
 3. Install Node dependencies (for Vue and Tailwind)
     npm install
-3. Configure environmen
+3. Configure environment
     Copy .env.example to .env
     Set database credentials
 4. Run migrations
@@ -75,5 +83,5 @@ The application follows the MVC pattern:
     php artisan serve
 
 ## Notes
-This project was created as a technical exercise focused on implementing a clean and structured shopping cart system using Laravel authentication and Vue for frontend interacion. 
+This project was created as a technical exercise focused on implementing a clean and structured shopping cart system using Laravel authentication and Vue for frontend interaction. 
 Application should be accessible at http://127.0.0.1:8000.
