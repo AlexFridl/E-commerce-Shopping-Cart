@@ -11,7 +11,7 @@ The application follows Laravel best practices and uses the official Laravel aut
 •	Implemented Cash on Delivery checkout with shipping address management.
 •	Developed inventory management logic that automatically detects low stock levels. 
 •	Implemented automatic low-stock email notifications using Laravel Jobs. 
-•	Implemented a scheduled daily sales report using Laravel Task Scheduler and a custom Artisan Command
+•	Created scheduled daily sales report using Laravel Task Scheduler and a custom Artisan Command
 •	Built responsive user interfaces in Vue.js integrated with Laravel through Inertia.js.
 
 
@@ -39,60 +39,91 @@ Cart actions are persisted in the database and are not handled through sessions 
 
 ## Tech Stack
 
-- **Backend:**  Laravel
-- **Frontend:** Vue (Laravel starter kit)
+- **Backend:**  PHP, Laravel
+- **Frontend:** Vue.js, Inertia.js
 - **Styling:** Tailwind CSS
 - **Database:** MySQL
-
-- PHP
-- Laravel
-- MySQL
-- Vue.js
-- Inertia.js
-- Bootstrap
-- Laravel Jobs
-- Laravel Task Scheduler
 ---
 
 ## Project Structure
 
 The application follows the MVC pattern:
 
-- Models: User, Category, Product, Cart, Order, City
-- Controllers (Handle cart and product logic): CartController, CategoryController, HomeController, OrderController, ProductController
-- Vue components (Manage frontend interactions): MainLayout.vue, Footer.vue, Header.vue, Cart.vue, Category.vue, Home.vue, Order.vue, Product.vue
-- Database migrations (Define product and cart structure):      2026_01_26_113800_create_carts_table.php
-2026_01_26_113850_create_category_table.php
-2026_01_26_113858_create_products_table.php
-2026_01_26_113875_create_cart_product_table.php
-2026_01_26_120001_create_city_table.php
-2026_01_26_120010_create_orders.php
-2026_01_26_120018_create_order_product.php
-2026_01_29_200940_add_cart_status_cart_table.php
-- Seeders (Seed tables in database): CategorySeeder.php, CitySeeder.php, ProductSeeder.php
+### Models: 
+- User
+- Category
+- Product
+- Cart
+- Order
+- City
 
+### Controllers (Handle cart and product logic): 
+- CartController
+- CategoryController
+- HomeController
+- OrderController
+- ProductController
+
+### Vue components (Manage frontend interactions):
+- MainLayout.vue
+- Footer.vue
+- Header.vue
+- Cart.vue
+- Category.vue
+- Home.vue
+- Order.vue
+- Product.vue
+
+### Database migrations (Define product and cart structure):      
+- create_carts_table
+- create_category_table
+- create_products_table
+- create_cart_product_table
+- create_city_table
+- create_orders
+- create_order_product
+- add_cart_status_cart_table
+
+### Seeders (Seed tables in database): 
+- CategorySeeder
+- CitySeeder
+- ProductSeeder
 
 ---
 
 ## Installation
-
+Requirements: PHP 8.x, Composer, Node.js, npm, MySQL
 1. Clone the repository:
    ```bash
    git clone <repository-url>
-2. Install dependencies
+   cd <project-folder>
+   ```
+2. Install PHP dependencies
+   ```bash
     composer install
+   ```
+3. Install Node.js dependencies
+   ```bash
     npm install
-3. Install Node dependencies (for Vue and Tailwind)
-    npm install
-3. Configure environment
-    Copy .env.example to .env
-    Set database credentials
-4. Run migrations
+   ```
+4. Configure the environment 
+   - Copy `env.example` to `.env`
+   - Configure your database connection
+5. Generate the application key
+    ```bash
+    php artisan key:generate
+   ```
+6. Run database migration
+    ```bash
     php artisan migrate
-5. Start the development server
+   ```
+7. Populate the database with sample data
+   ```bash
+    php artisan db:seed
+   ```
+8. Start the development server
     npm run dev
     php artisan serve
 
 ## Notes
-This project was created as a technical exercise focused on implementing a clean and structured shopping cart system using Laravel authentication and Vue for frontend interaction. 
-Application should be accessible at http://127.0.0.1:8000.
+This project was created as a learning project to practice Laravel, Vue.js, and Inertia.js while implementing common e-commerce workflows and backend practices.
